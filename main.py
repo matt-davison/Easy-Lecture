@@ -45,7 +45,7 @@ def login():
 	elif request.method == 'GET':
 		return render_template('login.html')
 
-@app.route('/logout', methods=['GET']))
+@app.route('/logout', methods=['GET'])
 	if session.get('logged_in') and session['logged_in']:
 		session.clear()
 	return redirect(url_for("index"))
