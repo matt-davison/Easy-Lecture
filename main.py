@@ -11,8 +11,8 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/index')
-def root():
+@app.route('/index', methods=['GET'])
+def index():
 	if not session.get('logged_in'):
 		return redirect(url_for('login'))
 	else:
@@ -31,7 +31,7 @@ def get_users_courses():
 		return jsonify(get_course_names_for_user(request.form["username"]))
 
 
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login',  methods=['POST', 'GET'])
 def login():
 	if session.get("logged_in") and session["logged_in"]:
 		return redirect(url_for("index"))
