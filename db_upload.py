@@ -43,7 +43,7 @@ def upload_blob(source_dir, source_name):
 
     long_req(args.storage_uri, parse[0], parse[1], parse[2])
     
-    os.remove(os.path.join(source_dir, source_file_name))
-    os.remove(os.path.join(source_dir, source_file_wav))
+    os.remove(os.path.join(source_dir, source_name))
+    os.remove(os.path.join(source_dir, destination_wav))
 
     print("File {} uploaded and /temp cleared.".format(source_name))
