@@ -8,7 +8,7 @@ from firestore_manager import get_course_names_for_user
 
 log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-
+temp_dir = 'tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -114,5 +114,4 @@ def learn():
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
-	temp_dir = 'tmp'
 	app.run(host='127.0.0.1', port=8080, debug=True)
