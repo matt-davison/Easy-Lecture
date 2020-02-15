@@ -37,7 +37,9 @@ def login():
     if (request.method == 'POST'):
         session["username"] = request.form["username"]
         session["user_type"] = request.form["user_type"]
-        session["logged_in"] = True
+     	session["logged_in"] = True
+		print(session['user_type'])
+		print(session['username'])
     elif request.method == 'GET':
         return render_template('login.html')
 
