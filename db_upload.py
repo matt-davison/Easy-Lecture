@@ -19,14 +19,15 @@ def upload_blob(source_dir, source_name):
     source_file_name = os.path.join(source_dir, source_name)
     blob = bucket.blob(source_name)
     blob.upload_from_filename(source_file_name)
-    print("File {} uploaded to {}.".format(source_file_name, source_name))
 
     #generate .wav from .mp4
     destination_wav = os.path.splitext(source_name)[0]+".wav"
     source_file_wav = os.path.join(source_dir, destination_wav)
     audio_clip = VideoFileClip(source_file_name)
-    audio_clip.audio.write_audiofile(source_file_wav, nbytes=4, codec='pcm_s32le', ffmpeg_params=['-ac','1'])
+    audio_clip.audio.write_audiofile(source_file_wav, nbytes=4, codec='pcm_s16le', ffmpeg_params=['-ac','1'])
 
     wav_blob = bucket.blob(destination_wav)
     wav_blob.upload_from_filename(source_file_wav)
+
+    print("File {} uploaded.".format(source_name))
 

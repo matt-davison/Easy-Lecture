@@ -20,7 +20,8 @@ def test():
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
 	if request.method == 'POST':
-		return jsonify(get_course_names_for_user(request.form["username"]))
+		return jsonify(get_course_names_for_user("nateb@vt.edu"))
+		#return jsonify(get_course_names_for_user(request.form["username"]))
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
