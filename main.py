@@ -13,8 +13,9 @@ app = Flask(__name__)
 @app.route('/')
 def root():
 	if not session.get('logged_in'):
-			return redirect(url_for('login'))
-    return render_template('index.html')
+		return redirect(url_for('login'))
+	else:
+		return render_template('index.html')
 
 
 @app.route('/test')
@@ -31,15 +32,14 @@ def get_users_courses():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():    
-    if session.get("logged_in") and session["logged_in"]:
+	if session.get("logged_in") and session["logged_in"]:
 		return redirect(url_for("index"))
-
 	if (request.method == 'POST'):
 		session["username"] = request.form["username"]
 		session["user_type"] = request.form["user_type"]
 		session["logged_in"] = True
-    elif request.method == 'GET':
-        return render_template('login.html')
+	elif request.method == 'GET':
+		return render_template('login.html')
 
 
 @app.route('/manage_courses')
