@@ -1,7 +1,7 @@
 import datetime
-from flask import Flask, render_template, jsonify, request, make_response
+from flask import Flask, render_template, jsonify, request, make_response, session
 import os
-from werkzeug.utils import secure_filename
+from werkzeug.util import secure_filename
 import logging
 from db_upload import upload_blob
 from firestore_manager import *
@@ -12,6 +12,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
+	if not session.get('logged_in'):
+			return redirect(url_for('login'))
     return render_template('index.html')
 
 
@@ -23,14 +25,19 @@ def test():
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
     if request.method == 'POST':
-        return jsonify(get_course_names_for_user("nateb@vt.edu"))
-    # return jsonify(get_course_names_for_user(request.form["username"]))
+        #return jsonify(get_course_names_for_user("nateb@vt.edu"))
+    	return jsonify(get_course_names_for_user(request.form["username"]))
 
 
 @app.route('/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        return jsonify({})
+def login():    
+    if session.get("logged_in") and session["logged_in"]:
+		return redirect(url_for("index"))
+
+	if (request.method == 'POST'):
+		session["username"] = request.form["username"]
+		session["user_type"] = request.form["user_type"]
+		session["logged_in"] = True
     elif request.method == 'GET':
         return render_template('login.html')
 
