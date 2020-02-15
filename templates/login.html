@@ -24,16 +24,16 @@
 				<form action="/login" method="POST">
 				  <div class="form-group">
 				    <label for="username">Email address</label>
-				    <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
+				    <input type="email" name="username" class="form-control" id="username" aria-describedby="emailHelp">
 				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 				  </div>
 				  <div class="form-group">
 				    <label for="password">Password</label>
-				    <input type="password" class="form-control" id="password">
+				    <input type="password" name="password" class="form-control" id="password">
 				  </div>
 				  <div class="form-group">
 				    <label for="user_type">User Type:</label>
-				    <select class="form-control" id="user_type">
+				    <select name="user_type" class="form-control" id="user_type">
 				      <option>Student</option>
 				      <option>T.A</option>
 					  <option>Instructor</option>
