@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css"/>
+
+    <link rel="stylesheet" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/basic.min.css"/>
+
+    <script type="application/javascript" 
+     src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js">
+    </script>
+
+    <title>Lecture Upload</title>
+</head>
+<body>
+<h2>Please format your .mp3 or .mp4 as 'Department'-'Class'-'Lecture' <br />
+    Ex. "CS-1114-How to Java.mp4"</h2>
+<form method="POST" action='/upload_lecture' class="dropzone dz-clickable" 
+      id="dropper" enctype="multipart/form-data">
+</form>
+
+<script type="application/javascript">
+    Dropzone.options.dropper = {
+        paramName: 'file',
+        chunking: true,
+        forceChunking: true,
+        url: '/upload_lecture',
+        maxFilesize: 1025, // megabytes
+        chunkSize: 1000000 // bytes
+    }
+</script>
+</body>
+</html>

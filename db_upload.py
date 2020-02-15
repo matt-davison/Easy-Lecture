@@ -1,8 +1,7 @@
 from google.cloud import storage
 
-
-def upload_blob(bucket_name, source_file_name, destination_blob_name):
-    """Uploads a file to the bucket."""
+bucket_name = u'easylec'
+def upload_blob(source_file_name, destination_blob_name):
     # bucket_name = "your-bucket-name"
     # source_file_name = "local/path/to/file"
     # destination_blob_name = "storage-object-name"
