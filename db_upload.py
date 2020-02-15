@@ -46,4 +46,4 @@ def upload_blob(source_dir, source_name):
     os.remove(os.path.join(source_dir, source_name))
     os.remove(os.path.join(source_dir, destination_wav))
 
-    print("File {} uploaded and /temp cleared.".format(source_name))
+    print("File {} uploaded and /tmp cleared.".format(source_name))

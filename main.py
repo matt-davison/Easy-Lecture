@@ -62,7 +62,7 @@ def upload_lecture():
 	file = request.files['file']
 
 	secure_name = secure_filename(file.filename)
-	save_path = os.path.join('temp', secure_name)
+	save_path = os.path.join(temp_dir, secure_name)
 	current_chunk = int(request.form['dzchunkindex'])
 
 	# If the file already exists it's ok if we are appending to it,
@@ -93,7 +93,7 @@ def upload_lecture():
 			return make_response(('Size mismatch', 500))
 		else:
 			log.info(f'File {file.filename} has been uploaded successfully')
-			upload_blob('temp', secure_name)
+			upload_blob(temp_dir, secure_name)
 	else:
 		log.debug(f'Chunk {current_chunk + 1} of {total_chunks} '
 				  f'for file {file.filename} complete')
@@ -109,5 +109,5 @@ def learn():
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
-
+	temp_dir = 'tmp'
 	app.run(host='127.0.0.1', port=8080, debug=True)
