@@ -1,6 +1,7 @@
 from google.cloud import storage
 from moviepy.editor import VideoFileClip, AudioFileClip
 import os
+import firestore_manager
 
 bucket_name = u'easylec'
 def upload_blob(source_dir, source_name):
