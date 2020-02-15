@@ -6,6 +6,8 @@ def upload_blob(source_file_name, destination_blob_name):
     # source_file_name = "local/path/to/file"
     # destination_blob_name = "storage-object-name"
 
+    #"CS-2505-Intro_to_Python.mp4"
+
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(destination_blob_name)
