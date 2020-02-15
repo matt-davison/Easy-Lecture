@@ -1,3 +1,4 @@
 keys/
 temp/
 *.log
+__pycache__/
