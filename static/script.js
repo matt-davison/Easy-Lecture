@@ -12,8 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-// [START gae_python37_log]
 'use strict';
 
 window.addEventListener('load', function () {
@@ -21,4 +19,3 @@ window.addEventListener('load', function () {
   console.log("Hello World!");
 
 });
-// [END gae_python37_log]
