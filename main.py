@@ -46,6 +46,7 @@ def login():
 		return render_template('login.html')
 
 @app.route('/logout', methods=['GET'])
+def logout():
 	if session.get('logged_in') and session['logged_in']:
 		session.clear()
 	return redirect(url_for("index"))
