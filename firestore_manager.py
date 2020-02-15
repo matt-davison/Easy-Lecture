@@ -23,7 +23,7 @@ def get_course_names_for_user(user):
         courses.append([r.get().to_dict()['name'], r.get().to_dict()['dept'], r.get().id, r])
     return courses
 
-
+#returns course
 def get_course(ref):
     return ref.get().to_dict()
 
