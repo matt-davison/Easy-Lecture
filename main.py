@@ -12,10 +12,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-	if not session.get('logged_in'):
-		return redirect(url_for('login'))
-	else:
-		return render_template('index.html')
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    else:
+        return render_template('index.html')
 
 
 @app.route('/test')
@@ -26,20 +26,20 @@ def test():
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
     if request.method == 'POST':
-        #return jsonify(get_course_names_for_user("nateb@vt.edu"))
-    	return jsonify(get_course_names_for_user(request.form["username"]))
+        # return jsonify(get_course_names_for_user("nateb@vt.edu"))
+        return jsonify(get_course_names_for_user(request.form["username"]))
 
 
 @app.route('/login', methods=['POST', 'GET'])
-def login():    
-	if session.get("logged_in") and session["logged_in"]:
-		return redirect(url_for("index"))
-	if (request.method == 'POST'):
-		session["username"] = request.form["username"]
-		session["user_type"] = request.form["user_type"]
-		session["logged_in"] = True
-	elif request.method == 'GET':
-		return render_template('login.html')
+def login():
+    if session.get("logged_in") and session["logged_in"]:
+        return redirect(url_for("index"))
+    if (request.method == 'POST'):
+        session["username"] = request.form["username"]
+        session["user_type"] = request.form["user_type"]
+        session["logged_in"] = True
+    elif request.method == 'GET':
+        return render_template('login.html')
 
 
 @app.route('/manage_courses')
@@ -100,6 +100,7 @@ def upload_lecture():
 @app.route('/learn')
 def learn():
     return render_template('learn.html')
+
 
 if __name__ == '__main__':
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')

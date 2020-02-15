@@ -26,21 +26,21 @@ def long_req(storage_uri, dept, class_name, lecture_name):
     alternative = result.alternatives[0]
     print(u"Transcript: {}".format(alternative.transcript))
     # Print the start and end time of each word
-    word_arr= []
+    word_arr = []
     start_arr = []
-    for word in alternative.words:
-        word_arr.append(word.word)
-        sec = word.start_time.seconds * 1000000000
-        fin_sec = sec + word.start_time.nanos
-        start_arr.append(fin_sec)
+    results = response.results
+    for result in results:
+        alternative = result.alternatives[0]
+        for word in alternative.words:
+            word_arr.append(word.word)
+            sec = word.start_time.seconds * 1000000000
+            fin_sec = sec + word.start_time.nanos
+            start_arr.append(fin_sec)
     db = firestore.Client()
     doc_ref = db.collection(u'department').document(dept).collection(u'Courses') \
         .document(class_name).collection(u'Lectures').document(lecture_name)
     doc_ref.set({
-        u'transcript': alternative.transcript,
+        u'txt': alternative.transcript,
         u'timestamps': start_arr,
         u'words': word_arr
     })
-
-    print(word_arr)
-    print(start_arr)
