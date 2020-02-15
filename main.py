@@ -25,6 +25,7 @@ def manage_courses():
 @app.route('/upload')
 def upload():
     return render_template('upload_lecture.html')
+
 #Abdul Rehman on StackOverflow
 @app.route('/upload_lecture', methods=['POST'])
 def upload_lecture():
@@ -62,7 +63,7 @@ def upload_lecture():
             return make_response(('Size mismatch', 500))
         else:
             log.info(f'File {file.filename} has been uploaded successfully')
-            upload_blob(save_path, secure_name)
+            upload_blob('temp', secure_name)
     else:
         log.debug(f'Chunk {current_chunk + 1} of {total_chunks} '
                   f'for file {file.filename} complete')
