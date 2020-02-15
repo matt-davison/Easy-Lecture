@@ -31,8 +31,6 @@ def upload_blob(source_dir, source_name):
     wav_blob = bucket.blob(destination_wav)
     wav_blob.upload_from_filename(source_file_wav)
 
-    print("File {} uploaded.".format(source_name))
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--storage_uri",
@@ -43,5 +41,9 @@ def upload_blob(source_dir, source_name):
 
     parse = os.path.splitext(source_name)[0].split('-')
 
-    long_req(args.storage_uri, parse[0], parse[1], parse[2]
+    long_req(args.storage_uri, parse[0], parse[1], parse[2])
+    
+    os.remove(os.path.join(source_dir, source_file_name))
+    os.remove(os.path.join(source_dir, source_file_wav))
 
+    print("File {} uploaded and /temp cleared.".format(source_name))
