@@ -35,7 +35,7 @@ def upload_blob(source_dir, source_name):
     parser.add_argument(
         "--storage_uri",
         type=str,
-        default="gs://easylec/"+source_file_wav,
+        default="gs://easylec/"+destination_wav,
     )
     args = parser.parse_args()
 
