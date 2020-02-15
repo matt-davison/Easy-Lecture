@@ -4,7 +4,7 @@ import os
 from werkzeug.utils import secure_filename
 import logging
 from db_upload import upload_blob
-from firestore_manager import *
+from firestore_manager import get_course_names_for_user
 
 log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
