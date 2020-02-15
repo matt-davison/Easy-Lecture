@@ -28,7 +28,7 @@ def test():
 def get_users_courses():
 	if request.method == 'POST':
 		# return jsonify(get_course_names_for_user("nateb@vt.edu"))
-		return jsonify(get_course_names_for_user(request.form["username"]))
+		return jsonify(get_course_names_for_user(session["username"]))
 
 
 @app.route('/login',  methods=['POST', 'GET'])
@@ -45,6 +45,11 @@ def login():
 	elif request.method == 'GET':
 		return render_template('login.html')
 
+@app.route('/logout', methods=['GET'])
+def logout():
+	if session.get('logged_in') and session['logged_in']:
+		session.clear()
+	return redirect(url_for("index"))
 
 @app.route('/manage_courses')
 def manage_courses():
