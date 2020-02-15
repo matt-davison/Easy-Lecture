@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
+@app.route('/index')
 def root():
 	if not session.get('logged_in'):
 		return redirect(url_for('login'))
@@ -40,6 +41,7 @@ def login():
 		session["logged_in"] = True
 		print(session['user_type'])
 		print(session['username'])
+		return redirect(url_for("index"))
 	elif request.method == 'GET':
 		return render_template('login.html')
 
