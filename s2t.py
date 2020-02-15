@@ -2,8 +2,6 @@ from google.cloud import speech_v1
 from google.cloud import firestore
 
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'C:\\vthacks7.json'
-
 
 def long_req(storage_uri, dept, class_name, lecture_name):
     client = speech_v1.SpeechClient()

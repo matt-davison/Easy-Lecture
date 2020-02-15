@@ -1,1 +1,0 @@
-need a script to upload lectures to bucket and add their url and transcript info to the firestore

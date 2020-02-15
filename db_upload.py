@@ -2,6 +2,8 @@ from google.cloud import storage
 from moviepy.editor import VideoFileClip, AudioFileClip
 import os
 import firestore_manager
+import argparse
+from transcribe import long_req
 
 bucket_name = u'easylec'
 def upload_blob(source_dir, source_name):
@@ -30,4 +32,16 @@ def upload_blob(source_dir, source_name):
     wav_blob.upload_from_filename(source_file_wav)
 
     print("File {} uploaded.".format(source_name))
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--storage_uri",
+        type=str,
+        default="gs://easylec/"+source_file_wav,
+    )
+    args = parser.parse_args()
+
+    parse = os.path.splitext(source_name)[0].split('-')
+
+    long_req(args.storage_uri, parse[0], parse[1], parse[2]
 
