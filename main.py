@@ -4,6 +4,8 @@ import os
 from werkzeug.utils import secure_filename
 import logging
 from db_upload import upload_blob
+from firestore_manager import *
+
 log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
 
@@ -14,6 +16,11 @@ def root():
 @app.route('/test')
 def test():
 	return render_template('test.html')
+
+@app.route('/get_users_courses', methods=['POST'])
+def get_users_courses():
+	if request.method == 'POST':
+		return jsonify(get_course_names_for_user(request.form["username"]))
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
