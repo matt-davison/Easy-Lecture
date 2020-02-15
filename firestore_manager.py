@@ -27,6 +27,11 @@ def get_course_names_for_user(user):
 def get_course(ref):
     return ref.get().to_dict()
 
+def update_course_user(dep, id, email):
+    ref = db.collection(u'users').document(email)
+    ref.update({
+        u'courses': firestore.ArrayUnion([db.document('department/' + dep + '/Courses/' + id)])
+    })
 
 def get_courses_lec(ref):
     arr = []
