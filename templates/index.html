@@ -19,7 +19,17 @@
 
   {% include "navbar.html" %}
   
-  {% include "course_list.html" %}
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-3 bg-secondary course_list" style="height:100%">
+        {% include "course_list.html" %}    
+      </div>
+      <div class=" col-9 bg-light text-dark">
+        
+      </div>
+    </div>
+  </div>
+  
 
 </body>
 </html>
