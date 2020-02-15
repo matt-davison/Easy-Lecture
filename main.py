@@ -14,8 +14,17 @@ def login():
 	elif request.method == 'GET':
 		return render_template('login.html')
 
-@app.route('/add_course')
-def add_course():
-    return render_template('add_course.html')
+@app.route('/manage_courses')
+def manage_courses():
+    return render_template('manage_courses.html')
+
+@app.route('/upload_lecture')
+def upload_lecture():
+    return render_template('upload_lecture.html')
+
+@app.route('/learn')
+def learn():
+    return render_template('learn.html')
+    
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
