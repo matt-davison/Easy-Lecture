@@ -5,11 +5,6 @@ from google.cloud import firestore
 db = firestore.Client()
 
 
-# for doc in users_ref.stream():
-#    print(u'{} => {}'.format(doc.id, doc.to_dict()))
-# ref = db.collection(u'department').document(dept).collection(u'Courses')\
-#    .document(class_name).collection(u'Lectures').where(u'name', u'==', lecture_name)
-
 def get_lecture_by_name(dept, class_name, lecture_name):
     ref = db.collection(u'department').document(dept).collection(u'Courses') \
         .document(class_name).collection(u'Lectures').document(lecture_name)
