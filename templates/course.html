@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col text-center">
+            {% for ch_skill in ch_skills %}
+                <div class="border border-secondary rounded m-1 text-center bg-light">
+                    <h5>{{ ch_skill }}: {{ ch_skills[ch_skill] }}</h5>
+                </div>
+            {% endfor %}
+        </div>
+</div>
+
+</body>
+</html>

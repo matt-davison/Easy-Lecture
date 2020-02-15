@@ -9,36 +9,43 @@ from firestore_manager import *
 log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
 
+
 @app.route('/')
 def root():
     return render_template('index.html')
 
+
 @app.route('/test')
 def test():
-	return render_template('test.html')
+    return render_template('test.html')
+
 
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
-	if request.method == 'POST':
-		return jsonify(get_course_names_for_user("nateb@vt.edu"))
-		#return jsonify(get_course_names_for_user(request.form["username"]))
+    if request.method == 'POST':
+        return jsonify(get_course_names_for_user("nateb@vt.edu"))
+    # return jsonify(get_course_names_for_user(request.form["username"]))
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-	if request.method == 'POST':
-		return jsonify({})
-	elif request.method == 'GET':
-		return render_template('login.html')
+    if request.method == 'POST':
+        return jsonify({})
+    elif request.method == 'GET':
+        return render_template('login.html')
+
 
 @app.route('/manage_courses')
 def manage_courses():
     return render_template('manage_courses.html')
 
+
 @app.route('/upload')
 def upload():
     return render_template('upload_lecture.html')
 
-#Abdul Rehman on StackOverflow
+
+# Abdul Rehman on StackOverflow
 @app.route('/upload_lecture', methods=['POST'])
 def upload_lecture():
     file = request.files['file']
@@ -82,12 +89,12 @@ def upload_lecture():
 
     return make_response(("Chunk upload successful", 200))
 
+
 @app.route('/learn')
 def learn():
     return render_template('learn.html')
-    
+
 if __name__ == '__main__':
-    
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
 
     app.run(host='127.0.0.1', port=8080, debug=True)
