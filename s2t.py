@@ -56,11 +56,11 @@ def main():
     parser.add_argument(
         "--storage_uri",
         type=str,
-        default="gs://easylec/vid_4_audio.mp3",
+        default="gs://easylec/female.wav",
     )
     args = parser.parse_args()
 
-    long_req(args.storage_uri, u'CS', u'2505', 'The quick proof of Bayes theorem')
+    long_req(args.storage_uri, u'CS', u'2505', 'The quick proof of Bayes theorem pt2')
 
 
 if __name__ == "__main__":
