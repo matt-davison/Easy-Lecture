@@ -12,6 +12,12 @@ We're using Google's Storage to host our lecture videos, Google's Firestore as o
 You just need Python(3) and an internet connection.
 Run: pip install -r requirements.txt
 
+## Contributing
+
+GNU GPLv3 :)
+
+OR Upload letures!!!
+
 ## Examples
 ### Logging in
 ![Login](https://github.com/matt-davison/easy-lecture/blob/master/example/login.PNG)
