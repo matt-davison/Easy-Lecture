@@ -13,7 +13,7 @@ socket.on('update', function(data) {
 	htmlResult += '<div class="col-8 bg-light text-dark text-right">'
 	htmlResult += '<span>' + data.msg + '</span></div></div>'
 
-	$('#chat-div').html(htmlResult)
+	$('#chat-div').append(htmlResult)
 })
 
 function sendMessage() {
