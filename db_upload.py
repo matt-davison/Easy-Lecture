@@ -2,11 +2,12 @@ from google.cloud import storage
 import os
 import firestore_manager
 import argparse
-#from moviepy.editor import VideoFileClip, AudioFileClip
+from moviepy.editor import VideoFileClip, AudioFileClip
 from transcribe import long_req
 
 bucket_name = u'easylec'
-def upload_blob(source_dir, source_name, audio_name):
+#def upload_blob(source_dir, source_name, audio_name):
+def upload_blob(source_dir, source_name):
     # bucket_name = "your-bucket-name"
     # source_file_name = "local/path/to/file"
     # source_name = "storage-object-name"
@@ -23,13 +24,10 @@ def upload_blob(source_dir, source_name, audio_name):
     blob.upload_from_filename(source_file_name)
 
     #generate .wav from .mp4
-    source_file_wav = os.path.join(source_dir, audio_name)
-    
-    '''
+    audio_name = os.path.splitext(source_name)[0]+".wav"
     audio_clip = VideoFileClip(source_file_name)
+    source_file_wav = os.path.join(source_dir, audio_name)
     audio_clip.audio.write_audiofile(source_file_wav, nbytes=4, codec='pcm_s16le', ffmpeg_params=['-ac','1'])
-    '''
-
     wav_blob = bucket.blob(audio_name)
     wav_blob.upload_from_filename(source_file_wav)
 

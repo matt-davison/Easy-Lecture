@@ -1,6 +1,9 @@
 runtime: python37
-
-instance_class: F8
+entrypoint: gunicorn -b :$PORT main:app
+instance_class: B8
+basic_scaling:
+  max_instances: 2
+  idle_timeout: 60m
 #resources:
 #  cpu: 8
 #  memory_gb: 16
@@ -19,3 +22,6 @@ handlers:
   # the entire handlers section) when there are no static files defined.
 - url: /.*
   script: auto
+
+includes:
+  - keys/envkeys.yaml
