@@ -22,8 +22,11 @@ def get_departments():
 	return new_arr
 	
 def get_courses_by_department(dept):
-	ref = db.collection(u'department').document(dept).get().to_dict()
-	return ref
+	arr = []
+	ref = db.collection(u'department').document(dept).collection(u'Courses')
+	for doc in ref.stream():
+		arr.append([doc.to_dict(), doc.id])
+	return arr
 
 
 def get_course_names_for_user(user):
@@ -49,7 +52,7 @@ def get_courses_lec(ref):
 	for doc in courses.stream():
 		arr.append([doc.to_dict(), doc.id])
 	return arr
-#d
+
 def get_courses_lec_lng(dept, id):
 	arr = []
 	courses = db.collection(u'department').document(dept).collection(u'Courses').document(id).collection(u'Lectures')
