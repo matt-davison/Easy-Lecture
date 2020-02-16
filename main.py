@@ -121,7 +121,7 @@ def lecture():
 
 	print(data)
 
-	return render_template('lecture.html')
+	return render_template('lecture.html', cno=cno, lec=lec, dep=dep, data=data)
 
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
