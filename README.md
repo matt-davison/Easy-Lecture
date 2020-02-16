@@ -16,7 +16,7 @@ Run: pip install -r requirements.txt
 
 GNU GPLv3 :)
 
-OR Upload letures!!!
+OR Upload Lectures!!!
 
 ## Examples
 ### Logging in
