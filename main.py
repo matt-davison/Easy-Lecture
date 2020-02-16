@@ -27,10 +27,15 @@ def test():
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
 	if request.method == 'POST':
-		print(session["username"])
+		# print(session["username"])
 		# return jsonify(get_course_names_for_user("nateb@vt.edu"))
 		return jsonify(get_course_names_for_user(session["username"]))
 
+
+@app.route('/get_courses_lectures', methods=['POST'])
+def get_courses_lectures():
+	if request.method == 'POST':
+		return jsonify(get_courses_lec_lng(request.form["department"], request.form["course_no"]))
 
 @app.route('/login',  methods=['POST', 'GET'])
 def login():
