@@ -1,10 +1,18 @@
 html, body {
   padding-top: 25px;
   height:100%;
+
+html,body,.container-fluid {
+    height:100%;
+}
+
+body {
+>>>>>>> Stashed changes
   font-family: "helvetica", sans-serif;
   text-align: center;
 }
 
+<<<<<<< Updated upstream
 .course_row {
 	padding-bottom: 15px;
 }
@@ -82,4 +90,19 @@ hr.solid {
 
 .message {
 	margin-bottom: 1px;
+}
+=======
+.course_list {
+	height: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.course_div {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.course_row {
+	padding-bottom: 15px;
 }
