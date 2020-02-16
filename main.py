@@ -162,6 +162,12 @@ def depts():
 		return jsonify(get_departments())
 
 
+@app.route('/get_dept_courses', methods=['POST'])
+def get_dept_courses():
+	if request.method == 'POST':
+		return jsonify(get_courses_by_department(request.form['dept']))
+
+
 if __name__ == '__main__':
 	app.secret_key = "..."
 	app.config['SESSION_TYPE'] = 'filesystem'
