@@ -8,6 +8,7 @@ from firestore_manager import get_courses_lec_lng
 from firestore_manager import update_course_user
 from firestore_manager import get_lecture_by_name
 from firestore_manager import get_departments
+from firestore_manager import delete_course_from_user
 
 #####################################################################################
 # Delete if socket breaks															#
@@ -182,6 +183,7 @@ def get_dept_courses():
 def delete_course():
 	dep = request.form['department']
 	num = request.form['course_no']
+	print(dep + " , " + num + " , " + session['username'] )
 	delete_course_from_user(session['username'], dep, num)
 	return jsonify({})
 
@@ -206,4 +208,4 @@ if __name__ == '__main__':
 	app.secret_key = "..."
 	app.config['SESSION_TYPE'] = 'filesystem'
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
-	socketio.run(app, host='0.0.0.0', port=80, debug=True)
+	socketio.run(app, host='127.0.0.1', port=8080, debug=True)

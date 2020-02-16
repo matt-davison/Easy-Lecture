@@ -126,8 +126,8 @@ function onCourseClick(button) {
 		.done(function () {
 			button.classList.remove('btn-info')
 			button.classList.add('btn-light')
-			active_enlisted_courses.pop(1, 0, [button.value, button.getAttribute('dept'), button.getAttribute('cno')])
-			console.log('')
+			active_enlisted_courses.pop([button.value, button.getAttribute('dept'), button.getAttribute('cno')])
+			console.log('deleted')
 		})
 		.fail(function() {
 			console.log('fuck me in the ass')

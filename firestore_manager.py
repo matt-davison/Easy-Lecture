@@ -67,8 +67,8 @@ def get_course_by_bc_ref(dept, id):
     return [ref.get().to_dict(), ref.id]
 
 
-def delete_course_from_user(usr, dept, id):
-    course = get_course_by_bc_ref(dept, id)
+def delete_course_from_user(usr, dept, cno):
+    course = get_course_by_bc_ref(dept, cno)
     refs = get_course_names_for_user(usr)
     for re in refs:
         if re[0] == course[0]['name']:
