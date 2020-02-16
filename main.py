@@ -6,6 +6,7 @@ from db_upload import upload_blob
 from firestore_manager import get_course_names_for_user
 from firestore_manager import get_courses_lec_lng
 from firestore_manager import update_course_user
+from firestore_manager import get_lecture_by_name
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
@@ -107,6 +108,20 @@ def update_user():
 		num = request.form['course_no']
 
 		update_course_user(dep, num, session['username'])
+
+@app.route('/lecture', methods=['GET'])
+def lecture():
+	dep = request.args.get('dep')
+	cno = request.args.get('cno')
+	lec = request.args.get('lec')
+	
+	print("{}\t{}\t{}".format(dep, cno, lec))
+	
+	data = get_lecture_by_name(dep, cno, lec)
+
+	print(data)
+
+	return render_template('lecture.html')
 
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
