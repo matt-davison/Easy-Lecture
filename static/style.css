@@ -62,3 +62,24 @@ hr.solid {
 	adding-top: 20px;
 	padding-bottom: 20px;
 }
+
+.chat-box {
+	height: 60%;
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 15px;
+	overflow-y: scroll;
+}
+
+.message-box {
+	height: 20%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 15px;
+}
+
+.message {
+	margin-bottom: 1px;
+}

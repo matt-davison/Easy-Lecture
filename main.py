@@ -191,6 +191,8 @@ def handle_connect():
 @socketio.on('chat-msg')
 def handle_message(json):
 	print(str(json))
+	json['username'] = session['username'];
+	json['user_type'] = session['user_type']
 	emit('update', json, broadcast=True)
 
 

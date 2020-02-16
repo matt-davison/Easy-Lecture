@@ -8,7 +8,12 @@ socket.on('connect', function() {
 
 socket.on('update', function(data) {
 	console.log(data);
-	$('#chat-div').append('<div class="row"><div class="col-12 username"><span>'+data.username+':</span></div><div class="col-12 message"><h5>'+data.msg+'</h5></div></div>')
+	var htmlResult = '<div class="row text-light message"><div class="col-4 bg-secondary ">'
+	htmlResult += '<h5><i>(' + data.user_type + ') ' + data.username.split('@')[0] + ':</i></h5></div>'
+	htmlResult += '<div class="col-8 bg-light text-dark text-right">'
+	htmlResult += '<span>' + data.msg + '</span></div></div>'
+
+	$('#chat-div').html(htmlResult)
 })
 
 function sendMessage() {
