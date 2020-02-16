@@ -10,7 +10,9 @@ def get_lecture_by_name(dept, class_name, lecture_name):
         .document(class_name).collection(u'Lectures').document(lecture_name)
     return ref.get().to_dict()
 
-
+def get_departments():
+    return db.collection(u'department')
+    
 def get_courses_by_department(dept):
     ref = db.collection(u'department').document(dept).get().to_dict()
     return ref
