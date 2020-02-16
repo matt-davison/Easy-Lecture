@@ -1,5 +1,5 @@
 html, body {
-  height:100%;
+  height:90%;
   font-family: "helvetica", sans-serif;
   text-align: center;
 }
@@ -31,3 +31,19 @@ html, body {
 .shadow {
 	box-shadow: 10px 10px 5px grey;
 }
+
+.search-result {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 25px;
+	border-radius: 10px;
+}
+
+hr.solid {
+    border-top: 2px solid #ddd;
+    width: 95%;
+    margin: 3px 0px 10px 0px;
+}
+

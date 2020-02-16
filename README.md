@@ -1,6 +1,6 @@
-# Easy-Lecture
+# Easy-Lectures
 ### VTHacks7 Project
-checks the vibe
+Democratizes education by providing accessible lectures with keyword searches and live chats with TA's.
 
 ## ?
 
