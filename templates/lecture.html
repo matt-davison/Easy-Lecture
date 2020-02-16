@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 		
-		<title>Easy Lecture - {{ lec }} </title>
+		<title>Easy Lectures - {{ lec }} </title>
 		
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,15 +21,36 @@
 		
 		<div class="container-fluid bg-light h-100">
 			
-			<div class="row bg-secondary text-light text-center" style = "padding-top: 15px; padding-bottom: 15px">
+			<div class="row bg-secondary text-light text-center sticky-bottom" style = "padding-top: 15px; padding-bottom: 15px">
 				<div class="col-12">
-					<h1>{{ dep }} {{ cno }}: {{ lec.replace("_", " ") }}</h1>
+					<h3>{{ dep }} {{ cno }}: {{ lec.replace("_", " ") }}</h3>
 				</div>
 			</div>
 
 			<div class="row text-center">
 				<div class="col-12" id="video-container" style = "padding-top: 25px; padding-bottom: 25px">
 					
+				</div>
+			</div>
+			<div class="row bg-dark text-light">
+				<div class="col-6" id="search_keyword" style = "padding-top: 25px; padding-bottom: 15px">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">Search for keyword(s):</span>
+						</div>
+						<input type="text" class="form-control" name="keyword" id="keyword">
+						<div class="input-group-append">
+							<button class="btn btn-info" onclick="search_keyword()">Search!</button>
+						</div>					
+					</div>
+				</div>
+				<div class="col-6 text-center" id="search_keyword" style = "padding-top: 15px;">
+					<h1>Chat:</h1>					
+				</div>
+			</div>
+			<div class="row bg-secondary text-light">
+				<div id="results-container" class='col-6 bg-secondary text-light' style='min-height: 289px; max-height: 289px'>
+
 				</div>
 			</div>
 		</div>
