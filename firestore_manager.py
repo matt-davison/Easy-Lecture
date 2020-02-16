@@ -41,3 +41,10 @@ def get_courses_lec(ref):
     for doc in courses.stream():
         arr.append([doc.to_dict(), doc.id])
     return arr
+#d
+def get_courses_lec_lng(dept, id):
+    arr = []
+    courses = db.collection(u'department').document(dept).collection(u'Courses').document(id).collection(u'Lectures')
+    for doc in courses.stream():
+        arr.append([doc.to_dict(), doc.id])
+    return arr
