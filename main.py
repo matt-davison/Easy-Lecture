@@ -64,44 +64,22 @@ def manage_courses():
 
 @app.route('/upload')
 def upload():
-	return render_template('upload_lecture.html')
+	return render_template('upload.html')
 
-
-# Abdul Rehman on StackOverflow
-@app.route('/upload_lecture', methods=['POST'])
+@app.route('/upload_video', methods=['GET','POST'])
 def upload_lecture():
 	file = request.files['file']
+	video_name = secure_filename(file.filename)
+	print(video_name)
+	#save_path = os.path.join(temp_dir, video_name)
+	#with open(save_path, 'w') as f:
+	file.save(os.path.join(temp_dir,video_name))
+	upload_blob(temp_dir, video_name)
+	return render_template('upload_success.html')
 
-	secure_name = secure_filename(file.filename)
-	save_path = os.path.join(temp_dir, secure_name)
-	current_chunk = int(request.form['dzchunkindex'])
-
-	# If the file already exists it's ok if we are appending to it,
-	# but not if it's new file that would overwrite the existing one
-	if os.path.exists(save_path) and current_chunk == 0:
-		# 400 and 500s will tell dropzone that an error occurred and show an error
-		return make_response(('File already exists', 400))
-
-	try:
-		with open(save_path, 'ab') as f:
-			f.seek(int(request.form['dzchunkbyteoffset']))
-			f.write(file.stream.read())
-	except OSError:
-		return make_response(("Not sure why,"
-							  " but we couldn't write the file to disk", 500))
-
-	total_chunks = int(request.form['dztotalchunkcount'])
-
-	if current_chunk + 1 == total_chunks:
-		# This was the last chunk, the file should be complete and the size we expect
-		if os.path.getsize(save_path) != int(request.form['dztotalfilesize']):
-			print("expected file size of {request.form['dztotalfilesize']} but was {os.path.getsize(save_path)}")
-			return make_response(('Size mismatch', 500))
-		else:
-			#log.info(f'File {file.filename} has been uploaded successfully')
-			upload_blob(temp_dir, secure_name)
-
-	return make_response(("Chunk upload successful", 200))
+@app.route('/upload_wait')
+def upload_wait()
+	return render_template('upload_wait.html')
 
 
 @app.route('/learn')

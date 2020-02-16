@@ -1,8 +1,8 @@
 from google.cloud import storage
-from moviepy.editor import VideoFileClip, AudioFileClip
 import os
 import firestore_manager
 import argparse
+from moviepy.editor import VideoFileClip, AudioFileClip
 from transcribe import long_req
 
 bucket_name = u'easylec'
@@ -15,7 +15,7 @@ def upload_blob(source_dir, source_name):
 
     #set up storage access
     storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
+    bucket = storage_client.get_bucket(bucket_name)
 
     #upload mp4
     source_file_name = os.path.join(source_dir, source_name)
@@ -40,10 +40,10 @@ def upload_blob(source_dir, source_name):
     args = parser.parse_args()
 
     parse = os.path.splitext(source_name)[0].split('-')
-
+    print(parse)
     long_req(args.storage_uri, parse[0], parse[1], parse[2])
     
-    os.remove(os.path.join(source_dir, source_name))
-    os.remove(os.path.join(source_dir, destination_wav))
+    #os.remove(os.path.join(source_dir, source_name))
+    #os.remove(os.path.join(source_dir, destination_wav))
 
     print("File {} uploaded and /tmp cleared.".format(source_name))
