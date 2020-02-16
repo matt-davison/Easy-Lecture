@@ -8,7 +8,7 @@ from firestore_manager import get_courses_lec_lng
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-temp_dir = 'tmp'
+temp_dir = '/tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -68,13 +68,22 @@ def upload():
 
 @app.route('/upload_video', methods=['GET','POST'])
 def upload_lecture():
-	file = request.files['file']
-	video_name = secure_filename(file.filename)
+
+	video = request.files['file']
+	video_name = secure_filename(video.filename)
 	print(video_name)
+
+	audio = request.files['audio']
+	audio_name = secure_filename(audio.filename)
+	print(audio_name)
 	#save_path = os.path.join(temp_dir, video_name)
 	#with open(save_path, 'w') as f:
-	file.save(os.path.join(temp_dir,video_name))
-	upload_blob(temp_dir, video_name)
+
+	video.save(os.path.join(temp_dir,video_name))
+
+	audio.save(os.path.join(temp_dir, audio_name))
+
+	upload_blob(temp_dir, video_name, audio_name)
 	return render_template('upload_success.html')
 
 @app.route('/upload_wait')
