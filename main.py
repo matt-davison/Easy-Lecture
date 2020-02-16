@@ -135,13 +135,20 @@ def lecture():
 
 	d = dict()
 	for i in range(len(data['words'])):
-		word = data['words'][i]
+		word = data['words'][i].lower()
 		time = int((data['timestamps'][i]) / 1000000000)
 		if word not in d:
 			d[word] = list()
 		d[word].append(time)
 
-	data['word_struct'] = d
+	l = list()
+	for key in d:
+		new_d = dict()
+		new_d['word'] = key
+		new_d['arr'] = d[key]
+		l.append(new_d)
+
+	data['word_struct'] = l
 	return render_template('lecture.html', cno=cno, lec=lec, dep=dep, data=data)
 
 if __name__ == '__main__':
