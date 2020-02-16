@@ -19,12 +19,23 @@
 	</head>
 <body>
 
-  {% include "navbar.html" %}
+    {% include "navbar.html" %}
   
-  <div class="container-fluid bg-light h-100">
-    
-  </div>
+	<div class="container-fluid bg-light h-100">
+		
+		<div class="row departments bg-secondary text-light text-center" id="departments-list">
+			<div class="col-12">
+				<h3><u>Departments</u></h3>
+			</div>
+			<div class="container" id="departments">
+				
+			</div>
+		</div>	
+		<div class="row courses bg-light text-dark text-center" id = "courses-list">
+			
+		</div>
+	</div>
   
-  <script src="{{ url_for('static', filename='JS/course_list.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='JS/courses.js') }}" type="text/javascript"></script>
 </body>
 </html>
