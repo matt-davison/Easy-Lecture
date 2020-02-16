@@ -3,12 +3,7 @@ from flask import Flask, render_template, jsonify, request, make_response, sessi
 import os
 from werkzeug.utils import secure_filename
 from db_upload import upload_blob
-from firestore_manager import get_course_names_for_user
-from firestore_manager import get_courses_lec_lng
-from firestore_manager import update_course_user
-from firestore_manager import get_lecture_by_name
-from firestore_manager import get_departments
-
+from firestore_manager import get_departments, get_courses_by_department, get_lecture_by_name, update_course_user, get_courses_lec_lng, get_course_names_for_user
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
 temp_dir = '/tmp'
