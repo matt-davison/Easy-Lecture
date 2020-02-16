@@ -15,7 +15,7 @@ temp_dir = '/tmp'
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
-	if  session.get('logged_in') is not None and not session['logged_in']:
+	if (session.get('logged_in') is not None) and not session['logged_in']:
 		return redirect(url_for('login'))
 	else:
 		return render_template('index.html')
