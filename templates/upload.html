@@ -1,0 +1,25 @@
+<html>
+    <h1>Lecture Upload</h1>
+
+    <p>Please Upload .mp4 videos of lecture and .wav of lecture</br>
+        in the format "CS-2505-Intro to GCloud.mp4"</p>
+    
+    <br>
+  <body>
+    <form action="upload_video" method="POST" enctype="multipart/form-data">
+      <p>Upload Video File</p>
+      <input type="file" name="file">
+      <p>Department</p>
+      <select name="dept" id="dept_select">
+        <option value="CS">CS</option>
+      </select>
+      <p>Course:</p>
+      <select name="course" id="course_select">
+        <option value="2505">2505</option>
+        <option value="2114">2114</option>
+      </select>
+      <p></p>
+      <input type="submit" name="submit" value="Submit" onclick='window.open("upload_wait", "_blank")'>
+    </form>
+  </body>
+</html> 
