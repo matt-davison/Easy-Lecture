@@ -108,6 +108,18 @@ def update_user():
 
 		update_course_user(dep, num, session['username'])
 
+@app.route('/lecture', methods=['GET'])
+def lecture():
+	dep = request.args.get('dep')
+	num = request.args.get('cno')
+	lec = request.args.get('lec')
+
+	data = get_lecture_by_name(dep, cno, lec)
+
+	print(data)
+
+	return render_template('lecture.html')
+
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
