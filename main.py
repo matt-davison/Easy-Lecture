@@ -119,7 +119,6 @@ def lecture():
 	
 	data = get_lecture_by_name(dep, cno, lec)
 
-	print(data)
 
 	return render_template('lecture.html', cno=cno, lec=lec, dep=dep, data=data)
 
