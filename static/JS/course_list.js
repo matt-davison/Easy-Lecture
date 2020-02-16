@@ -121,7 +121,7 @@ function onLectureClick(department, course_no, video_name, button) {
 				htmlResult += '<h3>' + video_name + ' - ' + department + ' ' + course_no + '</h3></div></div>'
 				
 				htmlResult += '<div class="row course_row text-center"><div class="col-12">'
-				htmlResult += '<iframe  width="425" height="344" src="' + active_course_lectures[i][0]['videoURL'] + '" frameborder="0" allowfullscreen></iframe>'
+				htmlResult += '<iframe class="shadow" width="611" height="344" src="' + active_course_lectures[i][0]['videoURL'] + '" frameborder="0" allowfullscreen></iframe>'
 				htmlResult += '</div></div>'
 
 				htmlResult += '<div class="row course_row"><div class="col-12">'
