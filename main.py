@@ -78,7 +78,7 @@ def upload_lecture():
 	return render_template('upload_success.html')
 
 @app.route('/upload_wait')
-def upload_wait()
+def upload_wait():
 	return render_template('upload_wait.html')
 
 
