@@ -59,7 +59,7 @@ def get_courses_lectures():
 
 @app.route('/login',  methods=['POST', 'GET'])
 def login():
-	if (session.get('logged_in') is None) or not session['logged_in']:
+	if session.get('logged_in') and  session['logged_in']:
 		return redirect(url_for("index"))
 	if (request.method == 'POST'):
 		session["username"] = request.form["username"]
@@ -200,4 +200,5 @@ if __name__ == '__main__':
 	app.secret_key = "..."
 	app.config['SESSION_TYPE'] = 'filesystem'
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
-	socketio.run(app, host='127.0.0.1', port=8080, debug=True)
+	app.run(host='0.0.0.0', port=80, debug=True)
+	socketio.run(app, host='0.0.0.0', port=80, debug=True)
