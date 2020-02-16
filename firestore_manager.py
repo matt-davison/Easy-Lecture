@@ -11,7 +11,11 @@ def get_lecture_by_name(dept, class_name, lecture_name):
     return ref.get().to_dict()
 
 def get_departments():
-    return db.collection(u'department')
+    ref = db.collection(u'department')
+    arr = []
+    for doc in ref.stream():
+        arr.append([doc.to_dict(), doc.id])
+    return arr
     
 def get_courses_by_department(dept):
     ref = db.collection(u'department').document(dept).get().to_dict()
