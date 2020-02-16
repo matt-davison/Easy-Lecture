@@ -11,6 +11,9 @@ from firestore_manager import get_lecture_by_name
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
 temp_dir = '/tmp'
+app.secret_key = "..."
+app.config['SESSION_TYPE'] = 'filesystem'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
