@@ -10,7 +10,7 @@ from firestore_manager import get_lecture_by_name
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-temp_dir = 'tmp'
+temp_dir = '/tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -153,6 +153,7 @@ def lecture():
 	return render_template('lecture.html', cno=cno, lec=lec, dep=dep, data=data)
 
 if __name__ == '__main__':
-	app.secret_key = b"..."
+	app.secret_key = "..."
+	app.config['SESSION_TYPE'] = 'filesystem'
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
 	app.run(host='127.0.0.1', port=8080, debug=True)
