@@ -27,6 +27,7 @@ def test():
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
 	if request.method == 'POST':
+		print(session["username"])
 		# return jsonify(get_course_names_for_user("nateb@vt.edu"))
 		return jsonify(get_course_names_for_user(session["username"]))
 
