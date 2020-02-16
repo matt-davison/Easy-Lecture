@@ -10,7 +10,7 @@ from firestore_manager import get_lecture_by_name
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-temp_dir = '/tmp'
+temp_dir = 'tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -82,17 +82,18 @@ def upload_lecture():
 	video_name = secure_filename(video.filename)
 	print(video_name)
 
-	audio = request.files['audio']
-	audio_name = secure_filename(audio.filename)
-	print(audio_name)
+	#audio = request.files['audio']
+	#audio_name = secure_filename(audio.filename)
+	#print(audio_name)
 	#save_path = os.path.join(temp_dir, video_name)
 	#with open(save_path, 'w') as f:
 
 	video.save(os.path.join(temp_dir,video_name))
 
-	audio.save(os.path.join(temp_dir, audio_name))
+	#audio.save(os.path.join(temp_dir, audio_name))
 
-	upload_blob(temp_dir, video_name, audio_name)
+	#upload_blob(temp_dir, video_name, audio_name)
+	upload_blob(temp_dir, video_name)
 	return render_template('upload_success.html')
 
 @app.route('/upload_wait')
@@ -129,7 +130,7 @@ def lecture():
 	print("{}\t{}\t{}".format(dep, cno, lec))
 	
 	data = get_lecture_by_name(dep, cno, lec)
-	
+  
 	if (data == None):
 		return render_template("error.html")
 
@@ -145,6 +146,6 @@ def lecture():
 	return render_template('lecture.html', cno=cno, lec=lec, dep=dep, data=data)
 
 if __name__ == '__main__':
-	app.config["SECRET_KEY"] = "..."
+	app.secret_key = b"..."
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
 	app.run(host='127.0.0.1', port=8080, debug=True)
