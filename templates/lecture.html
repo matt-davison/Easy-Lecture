@@ -40,7 +40,8 @@
 						</div>
 						<input type="text" class="form-control" name="keyword" id="keyword">
 						<div class="input-group-append">
-							<button class="btn btn-info" onclick="search_keyword()">Search!</button>
+							<button type="submit" class="btn btn-info" onclick="search_keyword()">Search!</button>
+							<script>$(document).keypress(function(e) {if(e.which == 13) {search_keyword()}})</script>
 						</div>					
 					</div>
 				</div>

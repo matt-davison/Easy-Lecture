@@ -25,7 +25,6 @@ function search_keyword() {
 	
 	for (var i = 0; i < string_arr.length; i++) {
 		for (var j = 0; j < jsonData.word_struct.length; j++) {
-
 			if (fuzzy_search(string_arr[i].toLowerCase(), jsonData.word_struct[j].word.toLowerCase()) < string_arr[i].length / 2) {
 				console.log((fuzzy_search(string_arr[i].toLowerCase(), jsonData.word_struct[j].word.toLowerCase())))
 				result_arr.push(jsonData.word_struct[j]);
