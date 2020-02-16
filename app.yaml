@@ -1,6 +1,12 @@
 runtime: python37
 
 entrypoint: gunicorn -b :$PORT main:app
+
+resources:
+  cpu: 8
+  memory_gb: 16
+  disk_size_gb: 15
+
 env_variables:
   CLOUD_STORAGE_BUCKET: easylec
 handlers:
@@ -14,8 +20,3 @@ handlers:
   # the entire handlers section) when there are no static files defined.
 - url: /.*
   script: auto
-
-resources:
-  cpu: 8
-  memory_gb: 16
-  disk_size_gb: 15
