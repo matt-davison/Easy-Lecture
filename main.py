@@ -9,7 +9,7 @@ from firestore_manager import update_course_user
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-temp_dir = '/tmp'
+temp_dir = 'tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
