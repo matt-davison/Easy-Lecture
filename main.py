@@ -7,6 +7,7 @@ from firestore_manager import get_course_names_for_user
 from firestore_manager import get_courses_lec_lng
 from firestore_manager import update_course_user
 from firestore_manager import get_lecture_by_name
+from firestore_manager import get_departments
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
@@ -31,7 +32,7 @@ def test():
 
 @app.route('/get_users_courses', methods=['POST'])
 def get_users_courses():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	if request.method == 'POST':
 		# print(session["username"])
@@ -41,14 +42,14 @@ def get_users_courses():
 
 @app.route('/get_courses_lectures', methods=['POST'])
 def get_courses_lectures():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	if request.method == 'POST':
 		return jsonify(get_courses_lec_lng(request.form["department"], request.form["course_no"]))
 
 @app.route('/login',  methods=['POST', 'GET'])
 def login():
-	if session.get("logged_in") and session["logged_in"]:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for("index"))
 	if (request.method == 'POST'):
 		session["username"] = request.form["username"]
@@ -62,7 +63,7 @@ def login():
 
 @app.route('/logout', methods=['GET'])
 def logout():
-	if session.get('logged_in') and session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		session.clear()
 	return redirect(url_for("login"))
 
@@ -73,13 +74,13 @@ def manage_courses():
 
 @app.route('/upload')
 def upload():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	return render_template('upload.html')
 
 @app.route('/upload_video', methods=['GET','POST'])
 def upload_lecture():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	video = request.files['file']
 	video_name = secure_filename(video.filename)
@@ -101,20 +102,20 @@ def upload_lecture():
 
 @app.route('/upload_wait')
 def upload_wait():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	return render_template('upload_wait.html')
 
 
 @app.route('/courses')
 def courses():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	return render_template("courses.html")
 
 @app.route('/update_user', methods=['POST'])
 def update_user():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	if request.method == 'POST':
 		dep = request.form['department']
@@ -124,7 +125,7 @@ def update_user():
 
 @app.route('/lecture', methods=['GET'])
 def lecture():
-	if not session.get('logged_in') and not session['logged_in']:
+	if (session.get('logged_in') is None) or not session['logged_in']:
 		return redirect(url_for('login'))
 	dep = request.args.get('dep')
 	cno = request.args.get('cno')
@@ -154,6 +155,12 @@ def lecture():
 
 	data['word_struct'] = l
 	return render_template('lecture.html', cno=cno, lec=lec, dep=dep, data=data)
+
+@app.route('/get_depts', methods=['POST'])
+def depts():
+	if request.method == 'POST':
+		return jsonify(get_departments())
+
 
 if __name__ == '__main__':
 	app.secret_key = "..."
