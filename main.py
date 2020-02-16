@@ -3,6 +3,18 @@ from flask import Flask, render_template, jsonify, request, make_response, sessi
 import os
 from werkzeug.utils import secure_filename
 from db_upload import upload_blob
+from firestore_manager import get_course_names_for_user
+from firestore_manager import get_courses_lec_lng
+from firestore_manager import update_course_user
+from firestore_manager import get_lecture_by_name
+from firestore_manager import get_departments
+
+#####################################################################################
+# Delete if socket breaks															#
+#####################################################################################
+from flask_socketio import SocketIO, send, emit
+
+
 from firestore_manager import get_departments, get_courses_by_department, get_lecture_by_name, update_course_user, get_courses_lec_lng, get_course_names_for_user
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
@@ -10,6 +22,9 @@ temp_dir = '/tmp'
 app.secret_key = "..."
 app.config['SESSION_TYPE'] = 'filesystem'
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
+
+
+socketio = SocketIO(app)
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -117,6 +132,7 @@ def update_user():
 		num = request.form['course_no']
 
 		update_course_user(dep, num, session['username'])
+		return redirect(url_for("courses"))
 
 @app.route('/lecture', methods=['GET'])
 def lecture():
@@ -163,8 +179,23 @@ def get_dept_courses():
 		return jsonify(get_courses_by_department(request.form['dept']))
 
 
+#####################################################################################
+# Here Begins the scary live chat stuff												#
+#####################################################################################
+
+@socketio.on('connect')
+def handle_connect():
+	#print("connected")
+	emit('test', {"data": "this is a message"})
+
+@socketio.on('chat-msg')
+def handle_message(json):
+	print(str(json))
+	emit('update', json, broadcast=True)
+
+
 if __name__ == '__main__':
 	app.secret_key = "..."
 	app.config['SESSION_TYPE'] = 'filesystem'
 	os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.path.join('keys', 'vthacks7.json')
-	app.run(host='127.0.0.1', port=8080, debug=True)
+	socketio.run(app, host='127.0.0.1', port=8080, debug=True)
