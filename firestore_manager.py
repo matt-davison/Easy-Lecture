@@ -25,7 +25,9 @@ def get_courses_by_department(dept):
 	arr = []
 	ref = db.collection(u'department').document(dept).collection(u'Courses')
 	for doc in ref.stream():
-		arr.append([doc.to_dict(), doc.id])
+		d = doc.to_dict()
+		d['num'] = doc.id
+		arr.append(d)
 	return arr
 
 
