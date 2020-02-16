@@ -20,19 +20,19 @@ OR Upload Lectures!!!
 
 ## Examples
 ### Logging in
-![Login](https://github.com/matt-davison/easy-lecture/blob/master/example/login.PNG)
+![Login](https://github.com/matt-davison/Easy-Lecture/blob/master/example/login.PNG)
 
 ### Selecting a Lecture
-![Selected Lecture](https://github.com/matt-davison/easy-lecture/blob/master/example/selected_lecture.PNG)
+![Selected Lecture](https://github.com/matt-davison/Easy-Lecture/blob/master/example/selected_lecture.PNG)
 
 ### Searching the Lecture
-![Searching a Lecture](https://github.com/matt-davison/easy-lecture/blob/master/example/searching_lecture.PNG)
+![Searching a Lecture](https://github.com/matt-davison/Easy-Lecture/blob/master/example/searching_lecture.PNG)
 
 ### Uploading a Lecture
-![Uploading a Lecture](https://github.com/matt-davison/easy-lecture/blob/master/example/lecture_upload.PNG)
+![Uploading a Lecture](https://github.com/matt-davison/Easy-Lecture/blob/master/example/lecture_upload.PNG)
 
 ### Chatting with a TA
-![Chatting with a TA](https://github.com/matt-davison/easy-lecture/blob/master/example/chat.PNG)
+![Chatting with a TA](https://github.com/matt-davison/Easy-Lecture/blob/master/example/chat.PNG)
 
 ## Authors
 Matt Davison (matt-davison), Gence Yalcin (genceyalcin), Thomas Szydlowski (thomas447), Nate Bensing (BlazeFace)
