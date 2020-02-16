@@ -1,4 +1,24 @@
-body {
+html, body {
+  height:100%;
   font-family: "helvetica", sans-serif;
   text-align: center;
+}
+
+.course_row {
+	padding-bottom: 15px;
+}
+
+.course_list {
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.login-box {
+	padding: 15px;
+	margin-top: 15%;
+	border-radius: 15px;
+}
+
+.shadow {
+	box-shadow: 10px 10px 5px grey;
 }
