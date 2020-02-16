@@ -25,7 +25,7 @@ def get_departments():
         new_arr.append(dep[1])
     return new_arr
 
-
+#for dept
 def get_courses_by_department(dept):
     arr = []
     ref = db.collection(u'department').document(dept).collection(u'Courses')
