@@ -66,7 +66,6 @@ function search_keyword() {
 function goto_timestamp(timestamp) {
 	var video = document.getElementById('lecture')
 	video.currentTime = timestamp;
-	video.play();
 }
 
 function translate_seconds_to_timestamp(seconds) {

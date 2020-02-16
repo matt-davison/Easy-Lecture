@@ -121,13 +121,16 @@ function onCourseClick(button) {
 		$.ajax({
 			type: "POST",
 			data: data,
-			url: "/",
+			url: "/delete_course",
 		})
 		.done(function () {
-			
+			button.classList.remove('btn-info')
+			button.classList.add('btn-light')
+			active_enlisted_courses.pop(1, 0, [button.value, button.getAttribute('dept'), button.getAttribute('cno')])
+			console.log('')
 		})
 		.fail(function() {
-
+			console.log('fuck me in the ass')
 		})
 	}
 
