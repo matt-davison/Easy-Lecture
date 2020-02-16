@@ -42,6 +42,7 @@ def get_course_names_for_user(user):
 def get_course(ref):
 	return ref.get().to_dict()
 
+#GEts Course by BreadCrumb
 def get_course_by_bc(dept, id):
 	ref = db.collection(u'department').document(dept).collection(u'Courses').document(id)
 	return ref.get().to_dict()
