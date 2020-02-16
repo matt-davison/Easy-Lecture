@@ -13,6 +13,15 @@ html, body {
 	padding-top: 15px;
 }
 
+.lecture_list {
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.lecture_row {
+	padding-bottom: 15px;
+}
+
 .login-box {
 	padding: 15px;
 	margin-top: 15%;
