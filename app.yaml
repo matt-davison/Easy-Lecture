@@ -1,9 +1,10 @@
 runtime: python37
 
-resources:
-  cpu: 8
-  memory_gb: 16
-  disk_size_gb: 15
+instance_class: F8
+#resources:
+#  cpu: 8
+#  memory_gb: 16
+#  disk_size_gb: 15
 
 env_variables:
   CLOUD_STORAGE_BUCKET: easylec

@@ -10,7 +10,7 @@ from firestore_manager import get_lecture_by_name
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-temp_dir = 'tmp'
+temp_dir = '/tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
