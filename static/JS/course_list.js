@@ -113,6 +113,7 @@ function onLectureClick(department, course_no, video_name, button) {
 		$('#lecture_view').addClass('bg-secondary')
 		$('#lecture_view').addClass('text-light')
 
+
 		for (var i = 0; i < active_course_lectures.length; i++) {
 			if (active_course_lectures[i][1] == video_name) {
 				var htmlResult = '<div class="row course_row text-center">'
@@ -181,6 +182,7 @@ function onCourseClick(department, course_no, button) {
 			$('#lecture_view').removeClass('text-light')
 			$('#lecture_view').addClass('text-dark')
 			$('#lecture_view').addClass('bg-light')
+			$('#lecture_view').html('')
 
 			active_lecture = undefined;
 		}
