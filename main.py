@@ -129,6 +129,10 @@ def lecture():
 	print("{}\t{}\t{}".format(dep, cno, lec))
 	
 	data = get_lecture_by_name(dep, cno, lec)
+	
+	if (data == None):
+		return render_template("error.html")
+
 	d = dict()
 	for i in range(len(data['words'])):
 		word = data['words'][i]
