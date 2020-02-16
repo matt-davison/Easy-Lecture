@@ -27,15 +27,16 @@
             <div class="col-12" style = "padding-top: 25px">
                 <h1>Lecture Upload</h1>
 
-                <p>Please Upload .mp4 videos of lecture and .wav of lecture</br>
-                    in the format "CS-2505-Intro to GCloud.mp4"</p>
+                <p>Please Upload .mp4 videos of a lecture</br>
+                    in the format 'department'-'Course #'-'Lecture Title'.mp4</br>
+                    Ex: "CS-2114-JUnit Testing.mp4</p>
                 
                 <br>
                 <form action="upload_video" method="POST" enctype="multipart/form-data">
                   <h4>Upload Video File</h4><br>
                   <input type="file" name="file" style="margin-bottom: 50px">
                   <p></p>
-                  <input type="submit" class = 'btn btn-info' name="submit" value="Submit" onclick='window.open("upload_wait", "_blank")'>
+                  <input type="submit" class = 'btn btn-info' name="submit" value="Submit" onclick='window.open("upload_wait", "_blank");this.disabled = true'>
                 </form>
             </div>
         </div>

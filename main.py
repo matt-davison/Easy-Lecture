@@ -15,6 +15,7 @@ from firestore_manager import get_departments
 from flask_socketio import SocketIO, send, emit
 
 
+from firestore_manager import get_departments, get_courses_by_department, get_lecture_by_name, update_course_user, get_courses_lec_lng, get_course_names_for_user
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
 temp_dir = '/tmp'
