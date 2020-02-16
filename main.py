@@ -104,6 +104,11 @@ def upload_lecture():
 	return make_response(("Chunk upload successful", 200))
 
 
+@app.route('/upload_wait')
+def upload_wait()
+	return render_template('upload_wait.html')
+
+
 @app.route('/learn')
 def learn():
 	return render_template('learn.html')
