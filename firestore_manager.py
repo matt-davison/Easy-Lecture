@@ -71,7 +71,7 @@ def delete_course_from_user(usr, dept, id):
     refs = get_course_names_for_user(usr)
     for re in refs:
         if re[0] == course[0]['name']:
-            ref = db.collection(u'users').document('nateb@vt.edu')
+            ref = db.collection(u'users').document(usr)
             ref.update({
                 u'courses': firestore.ArrayRemove([db.document('department/' + course[0]['dept'] + '/Courses/' + course[1])])
             })
