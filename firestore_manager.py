@@ -2,6 +2,8 @@ import os
 
 from google.cloud import firestore
 
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:\\Users\\Gence Yalcin\\vthacks7.json'
+
 db = firestore.Client()
 
 
@@ -20,7 +22,7 @@ def get_course_names_for_user(user):
     ref = db.collection(u'users').document(user).get().to_dict()
     courses = []
     for r in ref['courses']:
-        courses.append([r.get().to_dict()['name'], r.get().to_dict()['dept'], r.get().id, r])
+        courses.append([r.get().to_dict()['name'], r.get().to_dict()['dept'], r.get().id])
     return courses
 
 #returns course
