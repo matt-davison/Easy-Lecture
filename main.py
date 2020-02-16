@@ -49,7 +49,7 @@ def get_courses_lectures():
 
 @app.route('/login',  methods=['POST', 'GET'])
 def login():
-	if (session.get('logged_in') is None) or not session['logged_in']:
+	if session.get('logged_in') and  session['logged_in']:
 		return redirect(url_for("index"))
 	if (request.method == 'POST'):
 		session["username"] = request.form["username"]
