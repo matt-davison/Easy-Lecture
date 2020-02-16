@@ -2,6 +2,7 @@ import os
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:\\Users\\Gence Yalcin\\vthacks7.json'
 
+
 from google.cloud import firestore
 
 db = firestore.Client()
