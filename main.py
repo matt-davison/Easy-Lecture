@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from db_upload import upload_blob
 from firestore_manager import get_course_names_for_user
 from firestore_manager import get_courses_lec_lng
+from firestore_manager import update_course_user
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
@@ -86,6 +87,17 @@ def upload_wait():
 def learn():
 	return render_template('learn.html')
 
+@app.route('/courses')
+def courses():
+	return render_template("courses.html")
+
+@app.route('/update_user', methods=['POST'])
+def update_user():
+	if request.method == 'POST':
+		dep = request.form['department']
+		num = request.form['course_no']
+
+		update_course_user(dep, num, session['username'])
 
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
