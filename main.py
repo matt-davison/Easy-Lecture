@@ -178,6 +178,12 @@ def get_dept_courses():
 	if request.method == 'POST':
 		return jsonify(get_courses_by_department(request.form['dept']))
 
+@app.route('/delete_course', methods=['POST'])
+def delete_course():
+	dep = request.form('department')
+	num = request.form('course_no')
+	delete_course_from_user(session['username'], dep, num)
+	return jsonify({})
 
 #####################################################################################
 # Here Begins the scary live chat stuff												#
