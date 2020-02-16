@@ -3,6 +3,8 @@ from google.cloud import firestore
 
 import os
 
+
+#Adapted from Google Speech to Text API Documentation
 def long_req(storage_uri, dept, class_name, lecture_name):
     client = speech_v1.SpeechClient()
 
