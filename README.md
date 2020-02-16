@@ -8,8 +8,13 @@ You just need Python(3) and an internet connection.
 Run: pip install -r requirements.txt
 
 ## Examples
+### Logging in
 ![Login](https://github.com/matt-davison/easy-lecture/blob/master/example/login.PNG)
+
+### Selecting a Lecture
 ![Selected Lecture](https://github.com/matt-davison/easy-lecture/blob/master/example/selected_lecture.PNG)
+
+### Searching the Lecture
 ![Searching a Lecture](https://github.com/matt-davison/easy-lecture/blob/master/example/searching_lecture.PNG)
 
 ## Authors
