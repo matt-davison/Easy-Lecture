@@ -20,14 +20,11 @@ def long_req(storage_uri, dept, class_name, lecture_name):
     print(u"Waiting for operation to complete...")
     response = operation.result()
 
-    # The first result includes start and end time word offsets
     result = response.results[0]
-    # First alternative is the most probable result
-    alternative = result.alternatives[0]
-    print(u"Transcript: {}".format(alternative.transcript))
     # Print the start and end time of each word
     word_arr = []
     start_arr = []
+    full_transcript = ""
     results = response.results
     for result in results:
         alternative = result.alternatives[0]
@@ -36,11 +33,12 @@ def long_req(storage_uri, dept, class_name, lecture_name):
             sec = word.start_time.seconds * 1000000000
             fin_sec = sec + word.start_time.nanos
             start_arr.append(fin_sec)
+            full_transcript = full_transcript + " " + word.word
     db = firestore.Client()
     doc_ref = db.collection(u'department').document(dept).collection(u'Courses') \
         .document(class_name).collection(u'Lectures').document(lecture_name)
     doc_ref.set({
-        u'transcript': alternative.transcript,
+        u'transcript': full_transcript,
         u'timestamps': start_arr,
         u'words': word_arr,
         u'videoURL': "https://storage.cloud.google.com/easylec/"+dept+"-"+class_name+"-"+lecture_name+".mp4"

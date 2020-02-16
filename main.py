@@ -5,10 +5,12 @@ from werkzeug.utils import secure_filename
 from db_upload import upload_blob
 from firestore_manager import get_course_names_for_user
 from firestore_manager import get_courses_lec_lng
+from firestore_manager import update_course_user
+from firestore_manager import get_lecture_by_name
 
 #log = logging.getLogger('Easy-Lecture')
 app = Flask(__name__)
-temp_dir = '/tmp'
+temp_dir = 'tmp'
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
@@ -68,13 +70,22 @@ def upload():
 
 @app.route('/upload_video', methods=['GET','POST'])
 def upload_lecture():
-	file = request.files['file']
-	video_name = secure_filename(file.filename)
+
+	video = request.files['file']
+	video_name = secure_filename(video.filename)
 	print(video_name)
+
+	audio = request.files['audio']
+	audio_name = secure_filename(audio.filename)
+	print(audio_name)
 	#save_path = os.path.join(temp_dir, video_name)
 	#with open(save_path, 'w') as f:
-	file.save(os.path.join(temp_dir,video_name))
-	upload_blob(temp_dir, video_name)
+
+	video.save(os.path.join(temp_dir,video_name))
+
+	audio.save(os.path.join(temp_dir, audio_name))
+
+	upload_blob(temp_dir, video_name, audio_name)
 	return render_template('upload_success.html')
 
 @app.route('/upload_wait')
@@ -86,6 +97,31 @@ def upload_wait():
 def learn():
 	return render_template('learn.html')
 
+@app.route('/courses')
+def courses():
+	return render_template("courses.html")
+
+@app.route('/update_user', methods=['POST'])
+def update_user():
+	if request.method == 'POST':
+		dep = request.form['department']
+		num = request.form['course_no']
+
+		update_course_user(dep, num, session['username'])
+
+@app.route('/lecture', methods=['GET'])
+def lecture():
+	dep = request.args.get('dep')
+	cno = request.args.get('cno')
+	lec = request.args.get('lec')
+	
+	print("{}\t{}\t{}".format(dep, cno, lec))
+	
+	data = get_lecture_by_name(dep, cno, lec)
+
+	print(data)
+
+	return render_template('lecture.html')
 
 if __name__ == '__main__':
 	app.config["SECRET_KEY"] = "..."
