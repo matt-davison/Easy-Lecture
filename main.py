@@ -39,7 +39,7 @@ def get_users_courses():
 @app.route('/get_courses_lectures', methods=['POST'])
 def get_courses_lectures():
 	if not session.get('logged_in') and not session['logged_in']:
-		return redirect_for(url_for('login'))
+		return redirect(url_for('login'))
 	if request.method == 'POST':
 		return jsonify(get_courses_lec_lng(request.form["department"], request.form["course_no"]))
 
