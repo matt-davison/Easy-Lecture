@@ -1,4 +1,5 @@
 import os
+
 from google.cloud import firestore
 
 db = firestore.Client()
@@ -26,7 +27,6 @@ def get_course_names_for_user(user):
 def get_course(ref):
     return ref.get().to_dict()
 
-#adds course to user
 def update_course_user(dep, id, email):
     ref = db.collection(u'users').document(email)
     ref.update({
