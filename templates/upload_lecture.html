@@ -1,36 +1,22 @@
-<html lang="en">
-<head>
+<html>
+    <h1>Lecture Upload</h1>
 
-    <meta charset="UTF-8">
-
-    <link rel="stylesheet" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css"/>
-
-    <link rel="stylesheet" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/basic.min.css"/>
-
-    <script type="application/javascript" 
-     src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js">
-    </script>
-
-    <title>Lecture Upload</title>
-</head>
-<body>
-<h2>Please format your .mp3 or .mp4 as 'Department'-'Class'-'Lecture' <br />
-    Ex. "CS-1114-How to Java.mp4"</h2>
-<form method="POST" action='/upload_lecture' class="dropzone dz-clickable" 
-      id="dropper" enctype="multipart/form-data">
-</form>
-
-<script type="application/javascript">
-    Dropzone.options.dropper = {
-        paramName: 'file',
-        chunking: true,
-        forceChunking: true,
-        url: '/upload_lecture',
-        maxFilesize: 5000, // megabytes
-        chunkSize: 1000000 // bytes
-    }
-</script>
-</body>
-</html>
+    <p>Please Upload .mp4 videos of lecture and .wav of lecture</br>
+        in the format "CS-2505-Intro to GCloud(.mp4/.wav)"</p>
+    
+    <br>
+  <body>
+    <form action="upload_audio" method="POST" enctype="multipart/form-data">
+      <p>Upload Audio File</p>
+      <input type="file" name="file">
+      <p></p>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+    <form action="upload_video" method="POST" enctype="multipart/form-data">
+      <p>Upload Video File</p>
+      <input type="file" name="file">
+      <p></p>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </body>
+</html> 
