@@ -40,7 +40,8 @@ def long_req(storage_uri, dept, class_name, lecture_name):
     doc_ref = db.collection(u'department').document(dept).collection(u'Courses') \
         .document(class_name).collection(u'Lectures').document(lecture_name)
     doc_ref.set({
-        u'txt': alternative.transcript,
+        u'transcript': alternative.transcript,
         u'timestamps': start_arr,
-        u'words': word_arr
+        u'words': word_arr,
+        u'videoURL': "https://storage.cloud.google.com/easylec/"+dept+"-"+class_name+"-"+lecture_name+".mp4"
     })
