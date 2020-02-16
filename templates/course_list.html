@@ -1,9 +1,9 @@
 <div class="row course_row text-light">
 	<div class="col-12 text-center">
-		<h3>Course List for User Name:</h3>
+		<h3>Course List for {{ session["username"].split('@')[0] }}:</h3>
 	</div>
 </div>
-<div class="row course_row">
+<!-- <div class="row course_row">
 	<div class="col-12">
 		<button class="btn btn-block btn-light">Course 1</button>
 	</div>
@@ -23,3 +23,5 @@
 		<button class="btn btn-block btn-light">Course 4</button>
 	</div>
 </div>	
+ -->
+<script src="{{ url_for('static', filename='JS/course_list.js') }}"></script>
