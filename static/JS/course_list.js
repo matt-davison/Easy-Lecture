@@ -1,21 +1,20 @@
-$(document).on('ready', () => {
+window.addEventListener('load', function () {
 
-	getCourseInformationForUser();
+	getUserCourses();
 
-})
+});
 
-getCourseInformationForUser() {
-	
+function getUserCourses() {
 	$.ajax({
 		type: "POST",
-		url: "/get_user_courses",
-		success: function (result) {
-			console.log(result);
-		}
+		url: "/get_user_courses"
+	})
+	.done(function (result) {
+		console.log(result);
+	})
+	.fail(function () {
+		console.log("Shit failed")
 	})
 
-}
-
-goToCoursePage(department, courseNo) {
 
 }
