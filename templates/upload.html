@@ -36,8 +36,9 @@
                   <h4>Upload Video File</h4><br>
                   <input type="file" name="file" style="margin-bottom: 50px">
                   <p></p>
-                  <input type="submit" class = 'btn btn-info' name="submit" value="Submit" onclick='window.open("upload_wait", "_blank");this.disabled = true'>
-                  
+                  <input type="submit" class = 'btn btn-info' name="submit" value="Submit" onclick='window.open("upload_wait", "_blank");this.disabled = true; document.getElementById("loader").hidden = false;"'>
+                  <br>
+                  <div class="loader" id='loader' hidden></div>
                 </form>
             </div>
         </div>
