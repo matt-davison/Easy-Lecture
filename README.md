@@ -36,4 +36,4 @@ OR Upload Lectures!!!
 
 ## Authors
 Matt Davison (matt-davison), Gence Yalcin (genceyalcin), Thomas Szydlowski (thomas447), Nate Bensing (BlazeFace)
-### Created at VTHacks7 Hackathon
+### Created and Won 1st Place at VTHacks7 Hackathon
