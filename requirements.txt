@@ -29,7 +29,7 @@ lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
 moviepy==1.0.1
-numpy==1.18.1
+numpy==1.22.0
 Pillow==7.0.0
 proglog==0.1.9
 protobuf==3.11.3
